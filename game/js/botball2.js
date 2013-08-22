@@ -108,7 +108,6 @@ var BotBall2	= function(opts){
 		GAME.emitterScore.emit(object3d.position, scorePoints)
 
 		if( respawnedEnabled ){
-console.log('ddddkkljklkj')
 			// reset all velocity
 			body.velocity.set(0,0,0)
 			body.angularVelocity.set(0,0,0)

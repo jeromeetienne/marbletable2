@@ -287,7 +287,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		humanName	: 'Pool: level-3 round-1',
 		create		: function(){
 			return new MapPool1({
-				nBotBalls	: 6,
+				nBotBalls	: 8,
 				nBotBouncer	: 1
 			})
 		},
@@ -300,7 +300,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		humanName	: 'Pool: Bonus Round',
 		create		: function(){
 			return new MapPool1({
-				nBotBalls	: 6,
+				nBotBalls	: 8,
 				respawnedEnabled: true,
 				nBotEnemies	: 1,
 			})
@@ -349,6 +349,17 @@ require([ 'bower_components/threex.skymap/package.require.js'
 	mapConfigs.planets_3_2	= {
 		humanName	: 'Planets: level-3 round-2',
 		create		: mapConfigs.planets_3_1.create
+	}
+	mapConfigs.planets_bonus= {
+		humanName	: 'Planets: Bonus Round',
+		create		: function(){
+			return new MapPlanets1({
+				respawnedEnabled: true,
+				nBotBalls	: 2,
+				nBotBallsBig	: 4,
+				nBotEnemies	: 2,				
+			})
+		},
 	}
 
 
@@ -478,6 +489,12 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		pMaterialGround,
 		0.01,		// friction coefficient
 		0.6		// restitution
+	));
+	physicsWorld.world.addContactMaterial(new CANNON.ContactMaterial(
+		pMaterialEnemy,
+		pMaterialWall,
+		0.01,	// friction coefficient
+		0.2	// restitution
 	));
 
 	//////////////////////////////////////////////////////////////////////////////////

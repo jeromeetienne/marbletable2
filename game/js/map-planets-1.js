@@ -85,6 +85,18 @@ var MapPlanets1	= function(opts){
 		body.position.set(-15*GAME.tileW, 20*GAME.tileW, 0*GAME.tileW)	
 	})()
 
+	//////////////////////////////////////////////////////////////////////////////////
+	//		nBotEnemies							//
+	//////////////////////////////////////////////////////////////////////////////////
+
+	for(var i = 0; i < opts.nBotEnemies; i++){
+		;(function(){
+			var botEnemy	= new BotEnemy()
+			updateFcts.push(function(delta, now){
+				botEnemy.update(delta, now)
+			})
+		})()
+	}
 
 
 	//////////////////////////////////////////////////////////////////////////////////
@@ -103,7 +115,8 @@ var MapPlanets1	= function(opts){
 				var texture	= THREE.ImageUtils.loadTexture('images/planets/venus.jpg')			
 			}else	console.assert(false)
 			var botBall	= new BotBall2({
-				ballAttraction	: 0.0,
+				respawnedEnabled: opts.respawnedEnabled,
+				ballAttraction	: opts.ballAttraction,
 				material	: new THREE.MeshPhongMaterial({
 					map	: texture,
 				}),
@@ -129,7 +142,8 @@ var MapPlanets1	= function(opts){
 				var texture	= THREE.ImageUtils.loadTexture('images/planets/venusmap.jpg')			
 			}else	console.assert(false)
 			var botBall	= new BotBall2({
-				ballAttraction	: 0.0,
+				respawnedEnabled: opts.respawnedEnabled,
+				ballAttraction	: opts.ballAttraction,
 				radius		: 2.5*GAME.tileW,
 				material	: new THREE.MeshPhongMaterial({
 					map	: texture,

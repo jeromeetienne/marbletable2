@@ -109,9 +109,9 @@ var BotEnemy	= function(){
 			GAME.emitterImpactBall.emit(mesh.position)
 		}
 		// increase score
-		yeller.dispatchEvent('increaseScore', 10)
+		yeller.dispatchEvent('increaseScore', 250)
 		// emit a score
-		GAME.emitterScore.emit(mesh.position, '10')
+		GAME.emitterScore.emit(mesh.position, '250')
 	})
 
 }

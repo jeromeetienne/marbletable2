@@ -30,7 +30,7 @@ var MapPool1	= function(opts){
 	}
 
 	// init lighting
-	var lighting	= new LightingDefault()
+	var lighting	= new LightingSunset()
 	this.lighting	= lighting
 	scene.add(lighting.object3d)
 
@@ -54,7 +54,7 @@ var MapPool1	= function(opts){
 	
 
 	//////////////////////////////////////////////////////////////////////////////////
-	//		comment								//
+	//		change ground texture						//
 	//////////////////////////////////////////////////////////////////////////////////
 			
 	var groundMesh	= null
@@ -89,9 +89,9 @@ var MapPool1	= function(opts){
 
 
 	//////////////////////////////////////////////////////////////////////////////////
-	//		nBotEnemies							//
+	//		nBotBouncers							//
 	//////////////////////////////////////////////////////////////////////////////////
-	for(var i = 0; i < opts.nBotEnemies; i++){
+	for(var i = 0; i < opts.nBotBouncers; i++){
 		(function(){
 			var botBouncer	= new BotBouncer
 			table.object3d.add(botBouncer.object3d)
@@ -125,7 +125,21 @@ var MapPool1	= function(opts){
 		
 	for(var i = 0; i < opts.nBotBalls; i++){
 		;(function(){
-			var texture	= THREEx.createPoolBall.ballTexture('8', true, "#000000", 512)
+			var fillStylePerDesc	= {
+				'1'	: "#FDD017",	// Yellow
+				'2'	: "#2B65EC",	// Blue
+				'3'	: "#F62817",	// Red
+				'4'	: "#7A5DC7",	// Purple
+				'5'	: "#F87217",	// Orange
+				'6'	: "#348017",	// Green
+				'7'	: "#A52A2A",	// Brown or burgundy (tan in some ball sets)
+				'8'	: "#000000",	// Black
+				'9'	: "#FDD017",	// Yellow
+			};
+			var ballDescription	= (i+1).toString()
+			var fillStyle	= fillStylePerDesc[ballDescription]
+
+			var texture	= THREEx.createPoolBall.ballTexture(ballDescription, true, fillStyle, 512)
 			var botBall	= new BotBall2({
 				ballAttraction	: opts.ballAttraction,
 				respawnedEnabled: opts.respawnedEnabled,
