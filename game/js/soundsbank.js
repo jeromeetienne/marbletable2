@@ -132,7 +132,6 @@ var SoundsBank	= function(soundEnabled){
 
 	// init eatPill sound
 	this.playSoundTrack	= function(){
-return
 		if( !this.soundTrack )	return
 
 		var source	= context.createBufferSource()
