@@ -16,7 +16,7 @@ var GameTimer	= function(timeToLive){
 		var element	= document.querySelector('#timer');
 		element.innerText= stringPadder(nSeconds, 2, '0')
 					+ ':'
-					+ stringPadder(nMilliSecs, 3, '0');
+					+ stringPadder(nMilliSecs, 2, '0');
 		
 		function stringPadder(value, width, padChar){
 			var maxPadded	= Array(width+1).join(padChar) + value;
