@@ -149,6 +149,7 @@ console.warn = console.error
 		<br/>
 		Ready ?
 	</div>
+	<div id="roundTimeoutOsd" class='osdFont' style='display:none'>Round Timeout</div>
 	<div id="gameLostOsd" class='osdFont' style='display:none'>Game Over</div>
 	<div id="gameWonOsd" class='osdFont' style='display:none'>Game Won</div>
 	<div id="gameCompletedOsd" class='osdFont' style='display:none'>Game Completed</div>
@@ -201,7 +202,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 	};
 	
 	//////////////////////////////////////////////////////////////////////////////////
-	//		comment								//
+	//		Sport Level							//
 	//////////////////////////////////////////////////////////////////////////////////
 	
 	mapConfigs.sport_1_1	= {
@@ -251,9 +252,9 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		},
 	}
 
-//////////////////////////////////////////////////////////////////////////////////
-//		comment								//
-//////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////
+	//		Pool Level							//
+	//////////////////////////////////////////////////////////////////////////////////
 
 	mapConfigs.pool_1_1	= {
 		humanName	: 'Pool: level-1 round-1',
@@ -597,7 +598,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 			gameTimer.elapsedTime	= timeToLive
 			gameTimer.display()
 			// dispatch killPlayer
-			yeller.dispatchEvent('killPlayer')	
+			yeller.dispatchEvent('roundTimeout')
 		}
 	})
 	
@@ -708,6 +709,24 @@ require([ 'bower_components/threex.skymap/package.require.js'
 
 	 		// spawn new player
 			yeller.dispatchEvent('spawnPlayer')
+		})
+	})
+
+	yeller.addEventListener('roundTimeout', function(){
+		playerControls.disable	= true	
+		sounds.playDie()
+
+		Flow().seq(function(next){
+			document.querySelector('#roundTimeoutOsd').style.display	= 'block'
+			next()
+		}).seq(function(next){
+			setTimeout(function(){
+				next()
+			}, 1000*3)
+		}).seq(function(next){
+			document.querySelector('#roundTimeoutOsd').style.display	= 'none';
+			// reload the page				
+			location.reload()
 		})
 	})
 
