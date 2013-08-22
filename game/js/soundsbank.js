@@ -143,7 +143,7 @@ return
 	}
 	WebAudiox.loadBuffer(context, 'sounds/marbles.mp3', function(buffer){
 		this.soundTrack	= buffer;
-		//this.playSoundTrack()
+		this.playSoundTrack()
 	}.bind(this))
 
 	//////////////////////////////////////////////////////////////////////////////////
@@ -168,7 +168,6 @@ return
 
 	// init kick sound
 	this.playKick	= function(volume){
-return
 		if( !this.kickBuffer )	return
 		var destination	= lineOut.destination
 
@@ -193,7 +192,6 @@ return
 
 	// init a sound with jsfx
 	this.playRoll	= function(object3d){
-return
 		if( !this.rollBuffer )	return
 
 		var source	= context.createBufferSource();
@@ -223,7 +221,6 @@ return
 
 	// init a sound with jsfx
 	this.playSpawn	= function(){
-return
 		if( !this.spawnBuffer )	return
 		var source	= context.createBufferSource()
 		source.buffer	= this.spawnBuffer
@@ -240,7 +237,6 @@ return
 
 	// init a sound with jsfx
 	this.playDie	= function(){
-return
 		if( !this.dieBuffer )	return
 		var source	= context.createBufferSource()
 		source.buffer	= this.dieBuffer
@@ -287,7 +283,6 @@ return
 
 	// init a sound with jsfx
 	this.playScoreup	= function(){
-return
 		if( !this.scoreupBuffer )	return
 		var source	= context.createBufferSource()
 		source.buffer	= this.scoreupBuffer
