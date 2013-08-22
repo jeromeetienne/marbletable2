@@ -149,7 +149,6 @@ console.warn = console.error
 		<br/>
 		Ready ?
 	</div>
-	<div id="roundTimeoutOsd" class='osdFont' style='display:none'>Round Timeout</div>
 	<div id="gameLostOsd" class='osdFont' style='display:none'>Game Over</div>
 	<div id="gameWonOsd" class='osdFont' style='display:none'>Game Won</div>
 	<div id="gameCompletedOsd" class='osdFont' style='display:none'>Game Completed</div>
@@ -614,7 +613,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 			gameTimer.remaining	= 0.0
 			gameTimer.display()
 			// dispatch killPlayer
-			yeller.dispatchEvent('roundTimeout')
+			yeller.dispatchEvent('killPlayer', "Round Timed Out!")
 		}
 	})
 	
@@ -673,6 +672,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 	yeller.addEventListener('spawnPlayer', function(){
 
 		playerControls.disable	= false
+		if( gameTimer.remaining === 0 )	gameTimer.reset()
 		
 		if( physicsWorld.isRunning() === false )	physicsWorld.start()
 
@@ -684,12 +684,14 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		body.velocity.set(0,0,0)
 		body.angularVelocity.set(0,0,0)
 	})
-
-	yeller.addEventListener('killPlayer', function(){
+	yeller.addEventListener('killPlayer', function(reasonHTML){
 		console.log('killPlayer')
 
+		reasonHTML	= reasonHTML	|| "You die!"
+		document.querySelector('#killPlayerOsd').innerHTML	= reasonHTML
+
 		playerControls.disable	= true
-		Flow().seq(function(next){
+		return Flow().seq(function(next){
 
 			sounds.playDie()
 			
@@ -725,24 +727,6 @@ require([ 'bower_components/threex.skymap/package.require.js'
 
 	 		// spawn new player
 			yeller.dispatchEvent('spawnPlayer')
-		})
-	})
-
-	yeller.addEventListener('roundTimeout', function(){
-		playerControls.disable	= true	
-		sounds.playDie()
-
-		Flow().seq(function(next){
-			document.querySelector('#roundTimeoutOsd').style.display	= 'block'
-			next()
-		}).seq(function(next){
-			setTimeout(function(){
-				next()
-			}, 1000*3)
-		}).seq(function(next){
-			document.querySelector('#roundTimeoutOsd').style.display	= 'none';
-			// reload the page				
-			location.reload()
 		})
 	})
 

@@ -8,6 +8,9 @@ var GameTimer	= function(timeToLive){
 		// display it
 		this.display()
 	}
+	this.reset	= function(){
+		this.remaining	= timeToLive
+	}
 	this.display	= function(){
 		// parse this.elapsedTime
 		var nMilliSecs	= Math.floor(this.remaining*1000) % 1000;
