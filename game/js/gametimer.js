@@ -1,17 +1,17 @@
 var GameTimer	= function(){
 	// display timer
-	this.delay	= 0
+	this.elapsedTime= 0
 	this.disable	= false
 	this.update	= function(delta, now){
-		// update this.delay
-		if( this.disable === false )	this.delay	+= delta;
+		// update this.elapsedTime
+		if( this.disable === false )	this.elapsedTime	+= delta;
 		// display it
 		this.display()
 	}
 	this.display	= function(){
-		// parse this.delay
-		var nMilliSecs	= Math.floor(this.delay*1000) % 1000;
-		var nSeconds	= Math.floor(this.delay);
+		// parse this.elapsedTime
+		var nMilliSecs	= Math.floor(this.elapsedTime*1000) % 1000;
+		var nSeconds	= Math.floor(this.elapsedTime);
 		// update the html
 		var element	= document.querySelector('#timer');
 		element.innerText= stringPadder(nSeconds, 2, '0')

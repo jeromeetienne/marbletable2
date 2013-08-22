@@ -100,8 +100,8 @@ var MapSport1	= function(opts){
 	//////////////////////////////////////////////////////////////////////////////////
 	
 	;(function(){
-		var textureColor= THREE.ImageUtils.loadTexture('images/ballTextures/SoftBallColor.jpg')
-		var textureBump	= THREE.ImageUtils.loadTexture('images/ballTextures/SoftBallBump.jpg')
+		var textureColor= THREE.ImageUtils.loadTexture('images/ballTextures/SoftballColor.jpg')
+		var textureBump	= THREE.ImageUtils.loadTexture('images/ballTextures/SoftballBump.jpg')
 		var nBotBallsType	= Math.round(opts.nBotBalls/3)
 		for(var i = 0; i < nBotBallsType; i++){
 			;(function(){
