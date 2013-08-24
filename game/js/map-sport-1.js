@@ -1,9 +1,10 @@
 var MapSport1	= function(opts){
 	// parse argument
 	opts			= opts	|| {}
-	opts.respawnedEnabled	= opts.respawnedEnabled !== undefined ? opts.respawnedEnabled : false
+	opts.nLives		= opts.nLives !== undefined ? opts.nLives : 1
 	opts.ballAttraction	= opts.ballAttraction !== undefined ? opts.ballAttraction : 0.0
 	opts.nBotBalls		= opts.nBotBalls !== undefined ? opts.nBotBalls : 2
+	opts.slimGoal		= opts.slimGoal !== undefined ? opts.slimGoal : false
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		update loop								//
@@ -40,7 +41,13 @@ var MapSport1	= function(opts){
 	})
 	
 	// add botGoal
-	var botGoal	= new BotGoal
+	if( opts.slimGoal ){
+		var botGoal	= new BotGoal({
+			geometry	: new THREE.CubeGeometry(3*GAME.tileW, 3*GAME.tileW, 8*GAME.tileW)
+		})		
+	}else{
+		var botGoal	= new BotGoal()		
+	}
 	table.object3d.add(botGoal.object3d)
 	updateFcts.push(function(delta, now){
 		botGoal.update(delta, now)
@@ -83,7 +90,7 @@ var MapSport1	= function(opts){
 			;(function(){
 				var botBall	= new BotBall2({
 					ballAttraction	: opts.ballAttraction,
-					respawnedEnabled: opts.respawnedEnabled,
+					nLives: opts.nLives,
 					material	: new THREE.MeshPhongMaterial({
 						map	: texture,
 					}),
@@ -107,7 +114,7 @@ var MapSport1	= function(opts){
 			;(function(){
 				var botBall	= new BotBall2({
 					ballAttraction	: opts.ballAttraction,
-					respawnedEnabled: opts.respawnedEnabled,
+					nLives: opts.nLives,
 					material	: new THREE.MeshPhongMaterial({
 						map	: textureColor,
 						bumpMap	: textureBump,
@@ -134,7 +141,7 @@ var MapSport1	= function(opts){
 			;(function(){
 				var botBall	= new BotBall2({
 					ballAttraction	: opts.ballAttraction,
-					respawnedEnabled: opts.respawnedEnabled,
+					nLives		: opts.nLives,
 					material	: new THREE.MeshPhongMaterial({
 						map	: textureColor,
 						bumpMap	: textureBump,

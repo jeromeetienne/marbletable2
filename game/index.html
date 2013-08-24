@@ -200,7 +200,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		humanName	: 'Sport: level-1 round-1',
 		create		: function(){
 			return new MapSport1({
-				nBotBalls	: 2
+				nBotBalls	: 2,
 			})
 		},
 	}
@@ -226,6 +226,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 			return new MapSport1({
 				nBotBalls	: 6,
 				nBotBouncers	: 1,
+				// slimGoal	: true
 			})
 		},
 	}
@@ -237,8 +238,8 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		humanName	: 'Sport: Bonus Round',
 		create		: function(){
 			return new MapSport1({
-				nBotBalls		: 6,
-				respawnedEnabled	: true
+				nBotBalls	: 6,
+				nLives		: 3
 			})
 		},
 	}
@@ -292,7 +293,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		create		: function(){
 			return new MapPool1({
 				nBotBalls	: 8,
-				respawnedEnabled: true,
+				nLives		: 3,
 				nBotEnemies	: 1,
 			})
 		},
@@ -345,7 +346,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		humanName	: 'Planets: Bonus Round',
 		create		: function(){
 			return new MapPlanets1({
-				respawnedEnabled: true,
+				nLives		: 3,
 				nBotBalls	: 2,
 				nBotBallsBig	: 4,
 				nBotEnemies	: 2,				

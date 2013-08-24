@@ -13,7 +13,7 @@ var BotBall2	= function(opts){
 		})
 		return material
 	})
-	var respawnedEnabled	= opts.respawnedEnabled !== undefined ? opts.respawnedEnabled : false
+	var nLives		= opts.nLives !== undefined ? opts.nLives : 1
 	
 
 	//////////////////////////////////////////////////////////////////////////////////
@@ -109,7 +109,9 @@ var BotBall2	= function(opts){
 		// emit a score
 		GAME.emitterScore.emit(object3d.position, scorePoints)
 
-		if( respawnedEnabled ){
+		
+		nLives	-= 1;
+		if( nLives > 0 ){
 			// reset all velocity
 			body.velocity.set(0,0,0)
 			body.angularVelocity.set(0,0,0)

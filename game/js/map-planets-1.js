@@ -1,7 +1,7 @@
 var MapPlanets1	= function(opts){
 	// parse argument
 	opts			= opts	|| {}
-	opts.respawnedEnabled	= opts.respawnedEnabled !== undefined ? opts.respawnedEnabled : false
+	opts.nLives		= opts.nLives !== undefined ? opts.nLives : 1
 	opts.ballAttraction	= opts.ballAttraction !== undefined ? opts.ballAttraction : 0.1
 	opts.nBotBalls		= opts.nBotBalls !== undefined ? opts.nBotBalls : 2
 	opts.nBotBallsBig	= opts.nBotBallsBig !== undefined ? opts.nBotBallsBig : 0
@@ -115,7 +115,7 @@ var MapPlanets1	= function(opts){
 				var texture	= THREE.ImageUtils.loadTexture('images/planets/venus.jpg')			
 			}else	console.assert(false)
 			var botBall	= new BotBall2({
-				respawnedEnabled: opts.respawnedEnabled,
+				nLives		: opts.nLives,
 				ballAttraction	: opts.ballAttraction,
 				material	: new THREE.MeshPhongMaterial({
 					map	: texture,
@@ -142,7 +142,7 @@ var MapPlanets1	= function(opts){
 				var texture	= THREE.ImageUtils.loadTexture('images/planets/venusmap.jpg')			
 			}else	console.assert(false)
 			var botBall	= new BotBall2({
-				respawnedEnabled: opts.respawnedEnabled,
+				nLives: opts.nLives,
 				ballAttraction	: opts.ballAttraction,
 				radius		: 2.5*GAME.tileW,
 				material	: new THREE.MeshPhongMaterial({

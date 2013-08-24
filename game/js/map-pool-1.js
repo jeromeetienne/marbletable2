@@ -1,7 +1,7 @@
 var MapPool1	= function(opts){
 	// parse argument
 	opts			= opts	|| {}
-	opts.respawnedEnabled	= opts.respawnedEnabled !== undefined ? opts.respawnedEnabled : false
+	opts.nLives		= opts.nLives !== undefined ? opts.nLives : 1
 	opts.ballAttraction	= opts.ballAttraction !== undefined ? opts.ballAttraction : 0.1
 	opts.nBotBalls		= opts.nBotBalls !== undefined ? opts.nBotBalls : 2
 	opts.nBotEnemies	= opts.nBotEnemies !== undefined ? opts.nBotEnemies : 0
@@ -142,7 +142,7 @@ var MapPool1	= function(opts){
 			var texture	= THREEx.createPoolBall.ballTexture(ballDescription, true, fillStyle, 512)
 			var botBall	= new BotBall2({
 				ballAttraction	: opts.ballAttraction,
-				respawnedEnabled: opts.respawnedEnabled,
+				nLives		: opts.nLives,
 				material	: new THREE.MeshPhongMaterial({
 					map	: texture,
 				}),

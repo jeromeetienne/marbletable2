@@ -79,6 +79,7 @@ var Map04	= function(){
 		})
 		var botBall	= new BotBall2({
 			material	: material,
+			nLives		: 1,
 		})
 		updateFcts.push(function(delta, now){
 			botBall.update(delta, now)
