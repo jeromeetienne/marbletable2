@@ -58,9 +58,26 @@ var Map02	= function(){
 	//		comment								//
 	//////////////////////////////////////////////////////////////////////////////////
 	
+
 	;(function(){
-		var botBall	= new BotBall({
-			texture	: THREE.ImageUtils.loadTexture('images/planets/jupitermap.jpg')
+		var texture	= THREE.ImageUtils.loadTexture('images/planets/mars_1k_color.jpg')
+		var material	= new THREE.MeshPhongMaterial({
+			map	: texture
+		})
+		var botBall	= new BotBall2({
+			material	: material,
+		})
+		updateFcts.push(function(delta, now){
+			botBall.update(delta, now)
+		})
+	})()
+	;(function(){
+		var texture	= THREE.ImageUtils.loadTexture('images/planets/neptunemap.jpg')
+		var material	= new THREE.MeshPhongMaterial({
+			map	: texture
+		})
+		var botBall	= new BotBall2({
+			material	: material,
 		})
 		updateFcts.push(function(delta, now){
 			botBall.update(delta, now)
@@ -68,39 +85,27 @@ var Map02	= function(){
 	})()
 
 	;(function(){
-		var botBall	= new BotBall({
-			texture	: THREE.ImageUtils.loadTexture('images/planets/mars_1k_color.jpg')
+		var texture	= THREE.ImageUtils.loadTexture('images/planets/venusmap.jpg')
+		var material	= new THREE.MeshPhongMaterial({
+			map	: texture
+		})
+		var botBall	= new BotBall2({
+			material	: material,
 		})
 		updateFcts.push(function(delta, now){
 			botBall.update(delta, now)
 		})
 	})()
-
 	;(function(){
-		var botBall	= new BotBall({
-			texture	: THREE.ImageUtils.loadTexture('images/planets/neptunemap.jpg')
+		var texture	= THREE.ImageUtils.loadTexture('images/planets/plutomap1k.jpg')
+		var material	= new THREE.MeshPhongMaterial({
+			map	: texture,
+			bumpMap	: THREE.ImageUtils.loadTexture('images/planets/plutomap1k.jpg'),
+			bumpScale: 0.01
 		})
-		updateFcts.push(function(delta, now){
-			botBall.update(delta, now)
+		var botBall	= new BotBall2({
+			material	: material,
 		})
-	})()
-
-	;(function(){
-		var botBall	= new BotBall({
-			texture	: THREE.ImageUtils.loadTexture('images/planets/venusmap.jpg')
-		})
-		updateFcts.push(function(delta, now){
-			botBall.update(delta, now)
-		})
-	})()
-
-	;(function(){
-		var botBall	= new BotBall({
-			texture	: THREE.ImageUtils.loadTexture('images/planets/plutomap1k.jpg')
-		})
-		botBall.object3d.material.bumpMap	= THREE.ImageUtils.loadTexture('images/planets/plutomap1k.jpg'),
-		botBall.object3d.material.bumpScale	= 0.01;
-
 		updateFcts.push(function(delta, now){
 			botBall.update(delta, now)
 		})

@@ -52,7 +52,7 @@ var Map03	= function(){
 
 
 	//////////////////////////////////////////////////////////////////////////////////
-	//		comment								//
+	//		change the ground						//
 	//////////////////////////////////////////////////////////////////////////////////
 
 	var groundMesh	= null
@@ -113,8 +113,11 @@ var Map03	= function(){
 		var position	= config.position.clone()
 		position.multiplyScalar(1.5*GAME.tileW*2)
 		position.add(new THREE.Vector3(0, 1.5*GAME.tileW, 0))
-		var botBall	= new BotBall({
-			texture		: config.texture,
+		var material	= new THREE.MeshPhongMaterial({
+			map	: config.texture
+		})
+		var botBall	= new BotBall2({
+			material	: material,
 			position	: position,
 			ballAttraction	: 0
 		})

@@ -174,30 +174,22 @@ require([ 'bower_components/threex.skymap/package.require.js'
 	//////////////////////////////////////////////////////////////////////////////////
 
 	var mapConfigs	= {
-		// 'pool-1'	: {
-		// 	humanName	: 'Pool 1',
-		// 	create		: function(){ return new MapPool1() },
-		// }, 
-		// 'planets-1'	: {
-		// 	humanName	: 'Planets 1',
-		// 	create		: function(){ return new MapPlanets1() },
-		// }, 
-		// '01'	: {
-		// 	humanName	: 'Dev',
-		// 	create		: function(){ return new Map01() },
-		// }, 
-		// '02'	: {
-		// 	humanName	: 'Planets',
-		// 	create		: function(){ return new Map02() },
-		// }, 
-		// '03'	: {
-		// 	humanName	: 'Pool',
-		// 	create		: function(){ return new Map03() },
-		// }, 
-		// '04'	: {
-		// 	humanName	: 'Sport',
-		// 	create		: function(){ return new Map04() },
-		// },
+		'01'	: {
+			humanName	: 'Dev',
+			create		: function(){ return new Map01() },
+		}, 
+		'02'	: {
+			humanName	: 'Planets',
+			create		: function(){ return new Map02() },
+		}, 
+		'03'	: {
+			humanName	: 'Pool',
+			create		: function(){ return new Map03() },
+		}, 
+		'04'	: {
+			humanName	: 'Sport',
+			create		: function(){ return new Map04() },
+		},
 	};
 	
 	//////////////////////////////////////////////////////////////////////////////////
@@ -373,9 +365,9 @@ require([ 'bower_components/threex.skymap/package.require.js'
 	if( sessionStorage.getItem('nextMapId') !== GAME.mapId && GAME.mapId !== firstMapId ){
 		console.error('nextMapId is', sessionStorage.getItem('nextMapId'), 'and should be', GAME.mapId, 'Should reset to map', firstMapId)
 		// // put nextMapId in location
-		// location.href	= './#'+'01'
+		// location.href	= './#'+firstMapId
 		// // reload the page				
-		// location.reload()		
+		// location.reload()
 	}
 	console.assert( mapIds.indexOf(GAME.mapId) !== -1 )
 	sessionStorage.setItem('nextMapId', mapIds[mapIds.indexOf(GAME.mapId)+1])

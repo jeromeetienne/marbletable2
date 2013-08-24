@@ -1,4 +1,4 @@
-var BotBall	= function(opts){
+var BotBall0	= function(opts){
 	opts	= opts	|| {}
 	var ballAttraction	= opts.ballAttraction !== undefined ? opts.ballAttraction : 0.1
 	var texture	= opts.texture || cache.getSet('texture.botball', function(){

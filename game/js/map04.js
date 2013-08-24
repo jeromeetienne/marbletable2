@@ -58,8 +58,11 @@ var Map04	= function(){
 			var texture	= THREE.ImageUtils.loadTexture('images/sports/Basketball texture small.jpgb0270bdb-8751-473f-86c6-0c72ca7480b9Large.jpg')
 			return texture
 		})
-		var botBall	= new BotBall({
-			texture	: texture
+		var material	= new THREE.MeshPhongMaterial({
+			map	: texture
+		})
+		var botBall	= new BotBall2({
+			material	: material,
 		})
 		updateFcts.push(function(delta, now){
 			botBall.update(delta, now)
@@ -71,8 +74,11 @@ var Map04	= function(){
 			var texture	= THREE.ImageUtils.loadTexture('images/sports/Footballballfree.jpg59a2a1dc-64c8-4bc3-83ef-1257c9147fd1Large.jpg')
 			return texture
 		})
-		var botBall	= new BotBall({
-			texture	: texture
+		var material	= new THREE.MeshPhongMaterial({
+			map	: texture
+		})
+		var botBall	= new BotBall2({
+			material	: material,
 		})
 		updateFcts.push(function(delta, now){
 			botBall.update(delta, now)
