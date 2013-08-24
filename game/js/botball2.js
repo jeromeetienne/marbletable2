@@ -104,6 +104,8 @@ var BotBall2	= function(opts){
 		var scorePoints	= 1000;
 		// increase score
 		yeller.dispatchEvent('increaseScore', scorePoints)
+		// increase time
+		yeller.dispatchEvent('setTime', 10.0)
 		// emit a score
 		GAME.emitterScore.emit(object3d.position, scorePoints)
 
