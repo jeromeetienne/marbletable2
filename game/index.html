@@ -246,7 +246,7 @@ require([ 'bower_components/threex.skymap/package.require.js'
 		create		: function(){
 			return new MapSport1({
 				nBotBalls		: 6,
-				respawnedEnabled: true
+				respawnedEnabled	: true
 			})
 		},
 	}
@@ -599,7 +599,8 @@ require([ 'bower_components/threex.skymap/package.require.js'
 	//////////////////////////////////////////////////////////////////////////////////
 	
 	// add gameTimer
-	var gameTimer	= new GameTimer(60.0)
+	var timeToLive	= 10.0
+	var gameTimer	= new GameTimer(timeToLive)
 	updateFcts.push(function(delta, now){
 		// disable gameTimer
 		gameTimer.disable	= playerControls.disable;

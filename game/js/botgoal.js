@@ -1,4 +1,8 @@
-var BotGoal	= function(){
+var BotGoal	= function(opts){
+	// handle arguments
+	opts		= opts	|| {}
+	opts.geometry	= opts.geometry	|| new THREE.CubeGeometry(3*GAME.tileW, 3*GAME.tileW, 30*GAME.tileW)
+
 	// var texture	= THREE.ImageUtils.loadTexture('images/planets/mars_1k_color.jpg')
 	//var texture	= THREE.ImageUtils.loadTexture('images/wood.jpg')
 	//var texture	= THREE.ImageUtils.loadTexture('images/water.jpg')
@@ -13,7 +17,7 @@ var BotGoal	= function(){
 	}
 
 
-	var geometry	= new THREE.CubeGeometry(3*GAME.tileW, 3*GAME.tileW, 30*GAME.tileW)
+	var geometry	= opts.geometry
 	var material	= new THREE.MeshPhongMaterial({
 		map		: texture
 	})

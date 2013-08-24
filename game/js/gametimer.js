@@ -2,6 +2,17 @@ var GameTimer	= function(timeToLive){
 	// display timer
 	this.remaining	= timeToLive
 	this.disable	= false
+
+	yeller.addEventListener('addTime', function(value){
+		this.remaining	+= value
+		this.display();
+	}.bind(this))
+
+	yeller.addEventListener('setTime', function(value){
+		this.remaining	= value
+		this.display();
+	}.bind(this))
+
 	this.update	= function(delta, now){
 		// update this.elapsedTime
 		if( this.disable === false )	this.remaining	-= delta;
