@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html>
-<script>
-console.warn = console.error
-</script>
 <!-- include three.js stuff -->
 <script src='vendor/three.js/build/three.min.js'></script>
 <script src='vendor/three.js/examples/js/modifiers/SubdivisionModifier.js'></script>
@@ -96,6 +93,10 @@ console.warn = console.error
 </style>
 
 <style>
+canvas {
+	/* to have smooth transition on -webkit-filter */
+	transition:	-webkit-filter 0.5s linear;
+}
 #osdLeftColumn {
 	position	: absolute;
 	text-align	: left;
